@@ -1,72 +1,46 @@
+#aqui hacemos la importacion de todo lo que vamos a utilizar 
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QGridLayout
+from PyQt5.QtWidgets import QApplication, QLabel, QLineEdit, QVBoxLayout, QWidget, QPushButton, QMessageBox
 
-class PersonaForm(QWidget):
-    def _init_(self):
-        super()._init_()
+class VentanaDatosPersona(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Datos de la Persona")  #  aqui va el título de la ventana
+        self.setGeometry(100, 100, 400, 500)  # aqui es para colocar el tamaño de la ventana
 
-        # Configuración de la ventana
-        self.setWindowTitle("Datos de la Persona")
-        self.setGeometry(100, 100, 400, 500)
+        layout = QVBoxLayout()  # este es para que el layout sea vertical
 
-        # diseño y los widgets
-        layout = QGridLayout()
+        # aqui pusimos una lista de datos a solicitar
+        self.datos = ["Nombre", "Edad", "Género", "Nacionalidad", "Profesión", "Dirección", "Teléfono", "Correo Electrónico", "Estado Civil", "Ocupación"]
+        
+        # este es  un diccionario para guardar las entradas de los QLineEdit
+        self.entradas = {}
 
-        # Lista de los datos de usuario
-        datos = [
-            "Nombre", "Edad", "Género", "Dirección", "Teléfono",
-            "Correo Electrónico", "Ocupación", "Estado Civil",
-            "Nacionalidad", "Fecha de Nacimiento"
-        ]
+        # aqui creamos una entrada para cada dato
+        for dato in self.datos:
+            layout.addWidget(QLabel(dato + ":", self))  # esta es la etiqueta del dato
+            entrada = QLineEdit(self)  # esta es la entrada de texto
+            layout.addWidget(entrada)
+            self.entradas[dato] = entrada  # y aqui es donde se guarda la entrada en el diccionario
 
-        # elaborar campos de entrada para cada dato
-        self.campos = {}
-        for i, dato in enumerate(datos):
-            label = QLabel(f"{dato}:")
-            input_field = QLineEdit()
+        # este es el boton para enviar y mostrar los datos
+        boton_enviar = QPushButton("Ver Datos", self)
+        boton_enviar.clicked.connect(self.mostrar_datos)
+        layout.addWidget(boton_enviar)
 
-            # Añadir al layout
-            layout.addWidget(label, i, 0)
-            layout.addWidget(input_field, i, 1)
-
-            # Almacenar el campo de entrada 
-            self.campos[dato] = input_field
-
-        # Botón para imprimir los datos
-        self.print_button = QPushButton("Imprimir Datos")
-        self.print_button.clicked.connect(self.print_data)
-
-        # Aplicar estilo al botón para cambiar el color azul
-        self.print_button.setStyleSheet("background-color: blue; color: white; font-weight: bold;")
-
-        layout.addWidget(self.print_button, len(datos), 0, 1, 2)
-
-        # Botón de resetear rojo
-        self.reset_button = QPushButton("Resetear")
-        self.reset_button.clicked.connect(self.reset_fields)
-        self.reset_button.setStyleSheet("background-color: red; color: white; font-weight: bold;")
-
-        layout.addWidget(self.reset_button, len(datos) + 1, 0, 1, 2)
-
-        # volver al diseño principal
         self.setLayout(layout)
 
-    def print_data(self):
-        # Obtener y mostrar los datos de la persona
-        print("Datos de la Persona:")
-        print("--------------------")
-        for key, input_field in self.campos.items():
-            value = input_field.text()
-            print(f"{key}: {value}")
-        print("--------------------")
+    def mostrar_datos(self):
+        # aqui lo hicimos para crear un mensaje con los datos que se han ingresados ingresados
+        mensaje = ""
+        for dato, entrada in self.entradas.items():
+            valor = entrada.text()  # aqui se obtener el texto ingresado
+            mensaje += f"{dato}: {valor}\n"
 
-    def reset_fields(self):
-        # Resetear todos los campos de entrada
-        for input_field in self.campos.values():
-            input_field.clear()
+        # con este nosotros mostramos los datos ingresados en un mensaje emergente
+        QMessageBox.information(self, "Datos Ingresados", mensaje)
 
-# Crear la aplicación
 app = QApplication(sys.argv)
-window = PersonaForm()
-window.show()
-sys.exit(app.exec_())
+ventana = VentanaDatosPersona()
+ventana.show()  # mostramos la ventana
+sys.exit(app.exec_())  # iniciamos el ciclo de eventos

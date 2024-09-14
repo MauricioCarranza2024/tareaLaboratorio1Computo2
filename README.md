@@ -23,13 +23,17 @@ Es útil para situaciones donde se necesita proteger la entrada de información 
 Problema que resuelve el ejercicio 3:
 El programa es ideal para formularios de registro o sistemas de entrada de datos, donde se requiere la identificación de los usuarios mediante su cédula y nombre completo. Esto es común en aplicaciones de verificación o registro.
 
-"""**Ejercicio 4**""" En el ejercio 4 del libro nos pide Construir un programa que muestre una ventana a través de la cual se pueda leer tres datos básicos de 3 mascotas diferentes, y en este caso dimos dicha solucion.
+"""**Ejercicio 4**""" Este programa crea una ventana donde el usuario puede ingresar tres datos básicos de tres mascotas: su nombre, especie, y edad. El campo de edad está validado para aceptar solo números, lo que garantiza la correcta entrada de datos. Se utiliza una interfaz gráfica simple y directa para facilitar la captura de la información.
 
-Solucion: la solucion es que desarrollamos un programa donde se pueda llevar un registro de diferentes mas cotas sin importar la edad, el tipo, y  el nombre y asi mismo darle un beneficio a la veterinaria a llevar un mejor regitro ordenado y preciso y asi mismo para realizar el programa con interfaz grafica utilizamos PyQt5, para que tenga una buena presentacion.
+Problemática que resuelve:
 
-"""**Ejercicio 5**""" El ejercicio 5 del libro nos pide contruir un progrma que registre 10 datos caracteristicos de una persona y le dimos dicha solucion.
+Este programa permite registrar de forma sencilla y correcta los datos básicos de las mascotas, especialmente asegurándose de que la edad sea un valor numérico. Esto evita que los usuarios ingresen texto no válido y ayuda a organizar correctamente la información.
 
-Solucion:la solucion es que creamos una aplicacion de escritorio simple donde le permite al usuario poner 10 datos caracteristicos mediante una ventana interactiva donde se le facilita agregar sus datos sin ningun problema ya que la aplicacion esta diseñada para modificar, guardar o salir de la interfaz donde se encuentre el usuario y asi mismo llevar un orden de sus datos y para que esto se hiciera posibleme utilizamos PyQt5..
+"""**Ejercicio 5**""" El programa muestra una ventana que permite al usuario ingresar 10 datos característicos de una persona, como su nombre, edad, género, nacionalidad, entre otros. El campo de edad está validado para aceptar solo números, evitando errores en la entrada. Esta interfaz es sencilla y muestra los campos en un diseño vertical.
+
+Problemática que resuelve:
+
+El programa resuelve el problema de recolectar varios datos de una persona de manera eficiente y organizada. Asegura que los datos ingresados en el campo de edad sean válidos, evitando errores típicos en el formato de entrada. Además, permite almacenar y visualizar datos importantes de manera estructurada.
 
 """**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese su género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
 
