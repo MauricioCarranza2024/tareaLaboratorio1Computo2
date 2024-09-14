@@ -31,7 +31,7 @@ Solucion: la solucion es que desarrollamos un programa donde se pueda llevar un 
 
 Solucion:la solucion es que creamos una aplicacion de escritorio simple donde le permite al usuario poner 10 datos caracteristicos mediante una ventana interactiva donde se le facilita agregar sus datos sin ningun problema ya que la aplicacion esta diseñada para modificar, guardar o salir de la interfaz donde se encuentre el usuario y asi mismo llevar un orden de sus datos y para que esto se hiciera posibleme utilizamos PyQt5..
 
-"""**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese su género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
+"""**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese mediante el teclado su nombre, género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
 
 Los Widgets utilizados:
 
