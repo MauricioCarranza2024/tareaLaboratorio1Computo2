@@ -1,3 +1,4 @@
+#aqui hacemos la importacion de todo lo que vamos a utilizar
 import sys
 from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox
 

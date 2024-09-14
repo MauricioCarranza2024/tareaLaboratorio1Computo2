@@ -1,3 +1,4 @@
+#aqui hacemos la importacion de todo lo que vamos a utilizar
 import sys
 from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt  # aqui importe Qt ya que es necesario para alinear al centro
