@@ -2,9 +2,9 @@
 
 ESTOS EJERCICIOS FUERON DESARROLLADOS POR:
 
-1 - Mauricio Alfredo Carranza Velasques -SMTR059023
+1 - **Mauricio Alfredo Carranza Velasques -SMTR059023**
 
-2 - Erick Josue Chavez Moraga - SMTR152021
+2 - **Erick Josue Chavez Moraga - SMTR152021**
 
 En este caso dimos solucion a cada ejercio que nos precento y asi mismo pudimos analizar la funcion que dimos a cada uno y daremos un breve comentario a cada ejercio
 
@@ -18,7 +18,7 @@ Sirve como una interfaz simple para mostrar información personal en aplicacione
 Problema que resuelve el ejercicio 2:
 Es útil para situaciones donde se necesita proteger la entrada de información confidencial, como en formularios de inicio de sesión o autenticación.
 
-**Ejercicio 3**  Este programa permite al usuario ingresar su número de cédula y nombre completo en dos campos de texto separados. Luego, esta información puede ser procesada o almacenada. La interfaz es simple y funcional, ya que es diseñada para recopilar datos personales esenciales.
+"""**Ejercicio 3**"""  Este programa permite al usuario ingresar su número de cédula y nombre completo en dos campos de texto separados. Luego, esta información puede ser procesada o almacenada. La interfaz es simple y funcional, ya que es diseñada para recopilar datos personales esenciales.
 
 Problema que resuelve el ejercicio 3:
 El programa es ideal para formularios de registro o sistemas de entrada de datos, donde se requiere la identificación de los usuarios mediante su cédula y nombre completo. Esto es común en aplicaciones de verificación o registro.
