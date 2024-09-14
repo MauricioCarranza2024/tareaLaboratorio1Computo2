@@ -1,66 +1,72 @@
-import tkinter as tk
-from tkinter import messagebox
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QGridLayout
 
-# Aca hacemos la creacion de la clase persona para solicitar los datos al usuario de se va registrar 
-class Persona:
-    def __init__(self, nombre, apellido, edad, direccion, telefono, email, ocupacion, genero, estado_civil, nacionalidad):
-        self.nombre = nombre
-        self.apellido = apellido
-        self.edad = edad
-        self.direccion = direccion
-        self.telefono = telefono
-        self.email = email
-        self.ocupacion = ocupacion
-        self.genero = genero
-        self.estado_civil = estado_civil
-        self.nacionalidad = nacionalidad
+class PersonaForm(QWidget):
+    def _init_(self):
+        super()._init_()
 
-    def __str__(self):
-        return (f"Nombre: {self.nombre} {self.apellido}\nEdad: {self.edad}\nDirección: {self.direccion}\n"
-                f"Teléfono: {self.telefono}\nEmail: {self.email}\nOcupación: {self.ocupacion}\n"
-                f"Género: {self.genero}\nEstado Civil: {self.estado_civil}\nNacionalidad: {self.nacionalidad}")
+        # Configuración de la ventana
+        self.setWindowTitle("Datos de la Persona")
+        self.setGeometry(100, 100, 400, 500)
 
-# En esta otra clase habilitamos la ventana para que la persona se registre 
-class VentanaPersona:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Registro de Persona")
-        self.root.configure(bg="#f0f0f0")
-        self.datos = ["Nombre", "Apellido", "Edad", "Dirección", "Teléfono", "Email", "Ocupación", "Género", "Estado Civil", "Nacionalidad"]
-        self.entradas = []
+        # diseño y los widgets
+        layout = QGridLayout()
 
-        # aca creamos el titulo de la venta que seria la interfas de el progrma 
-        titulo = tk.Label(root, text="Formulario de Registro de Persona", font=("Arial", 16, "bold"), bg="#f0f0f0", fg="#333")
-        titulo.grid(row=0, column=0, columnspan=2, pady=(10, 20))
+        # Lista de los datos de usuario
+        datos = [
+            "Nombre", "Edad", "Género", "Dirección", "Teléfono",
+            "Correo Electrónico", "Ocupación", "Estado Civil",
+            "Nacionalidad", "Fecha de Nacimiento"
+        ]
 
-        # aca es donde se crean las etiquetas y entrada para obtener los 10 datos
-        for i, dato in enumerate(self.datos):
-            tk.Label(root, text=dato + ":", font=("Arial", 12), bg="#f0f0f0", fg="#333").grid(row=i+1, column=0, padx=(10, 10), pady=(5, 5), sticky="e")
-            entrada = tk.Entry(root, font=("Arial", 12), width=30)
-            entrada.grid(row=i+1, column=1, padx=(10, 10), pady=(5, 5))
-            self.entradas.append(entrada)
+        # elaborar campos de entrada para cada dato
+        self.campos = {}
+        for i, dato in enumerate(datos):
+            label = QLabel(f"{dato}:")
+            input_field = QLineEdit()
 
-        # esta es la creacion del boton para registrar los datos de las personas 
-        boton_registrar = tk.Button(root, text="Registrar Persona", command=self.leer_datos, font=("Arial", 12), bg="#4CAF50", fg="white", padx=10, pady=5)
-        boton_registrar.grid(row=11, column=0, columnspan=2, pady=(20, 10))
+            # Añadir al layout
+            layout.addWidget(label, i, 0)
+            layout.addWidget(input_field, i, 1)
 
-        # y este es el boton para salir del programa
-        boton_salir = tk.Button(root, text="Salir", command=self.salir, font=("Arial", 12), bg="#F44336", fg="white", padx=10, pady=5)
-        boton_salir.grid(row=12, column=0, columnspan=2, pady=(10, 10))
+            # Almacenar el campo de entrada 
+            self.campos[dato] = input_field
 
-    def leer_datos(self):
-        try:
-            datos_persona = [entrada.get() for entrada in self.entradas]
-            persona = Persona(*datos_persona[:2], int(datos_persona[2]), *datos_persona[3:])
-            messagebox.showinfo("Datos Registrados", str(persona))
-        except ValueError:
-            messagebox.showerror("Error", "La edad debe ser un número entero.")
-    
-    def salir(self):
-        self.root.quit()
+        # Botón para imprimir los datos
+        self.print_button = QPushButton("Imprimir Datos")
+        self.print_button.clicked.connect(self.print_data)
 
-# y aca se ejecuta el programa 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = VentanaPersona(root)
-    root.mainloop()
+        # Aplicar estilo al botón para cambiar el color azul
+        self.print_button.setStyleSheet("background-color: blue; color: white; font-weight: bold;")
+
+        layout.addWidget(self.print_button, len(datos), 0, 1, 2)
+
+        # Botón de resetear rojo
+        self.reset_button = QPushButton("Resetear")
+        self.reset_button.clicked.connect(self.reset_fields)
+        self.reset_button.setStyleSheet("background-color: red; color: white; font-weight: bold;")
+
+        layout.addWidget(self.reset_button, len(datos) + 1, 0, 1, 2)
+
+        # volver al diseño principal
+        self.setLayout(layout)
+
+    def print_data(self):
+        # Obtener y mostrar los datos de la persona
+        print("Datos de la Persona:")
+        print("--------------------")
+        for key, input_field in self.campos.items():
+            value = input_field.text()
+            print(f"{key}: {value}")
+        print("--------------------")
+
+    def reset_fields(self):
+        # Resetear todos los campos de entrada
+        for input_field in self.campos.values():
+            input_field.clear()
+
+# Crear la aplicación
+app = QApplication(sys.argv)
+window = PersonaForm()
+window.show()
+sys.exit(app.exec_())

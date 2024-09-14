@@ -1,54 +1,66 @@
-import tkinter as tk
-from tkinter import messagebox
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QGridLayout
 
-# En esta clase llamada mascota, identificamos el nombre, el tipo, la edad de las mascotas que se registraran 
-class Mascota:
-    def __init__(self, nombre, tipo, edad):
-        self.nombre = nombre
-        self.tipo = tipo
-        self.edad = edad
+class MascotaForm(QWidget):
+    def _init_(self):
+        super()._init_()
 
-    def __str__(self):
-        return f"Mascota: {self.nombre}, Tipo: {self.tipo}, Edad: {self.edad} años"
+        # Configuración de la ventana
+        self.setWindowTitle("Datos de Mascotas")
+        self.setGeometry(100, 100, 400, 300)
 
-# En esta otra clase creamos la venta donde se registraran las mascotas 
-class VentanaMascotas:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Registro de Mascotas")
-        self.entradas = []
+        # Crear el diseño y los widgets
+        layout = QGridLayout()
 
+        # Crear etiquetas y campos de entrada para cada mascota
+        self.mascotas = []
         for i in range(3):
-            tk.Label(root, text=f"Mascota {i+1}").grid(row=i*3, column=0, columnspan=2)
-            self.crear_entrada(i*3+1, "Nombre:", i)
-            self.crear_entrada(i*3+2, "Tipo:", i)
-            self.crear_entrada(i*3+3, "Edad:", i)
+            nombre_label = QLabel(f"Mascota {i + 1} Nombre:")
+            edad_label = QLabel(f"Mascota {i + 1} Edad:")
+            tipo_label = QLabel(f"Mascota {i + 1} Tipo:")
 
-        tk.Button(root, text="Registrar Mascotas", command=self.leer_datos).grid(row=10, column=0, columnspan=2)
+            nombre_input = QLineEdit()
+            edad_input = QLineEdit()
+            tipo_input = QLineEdit()
 
-    def crear_entrada(self, fila, texto, indice):
-        tk.Label(self.root, text=texto).grid(row=fila, column=0)
-        entrada = tk.Entry(self.root)
-        entrada.grid(row=fila, column=1)
-        if len(self.entradas) <= indice:
-            self.entradas.append([None, None, None])
-        self.entradas[indice][fila%3] = entrada
+            # Añadir al layout
+            layout.addWidget(nombre_label, i * 3, 0)
+            layout.addWidget(nombre_input, i * 3, 1)
+            layout.addWidget(edad_label, i * 3 + 1, 0)
+            layout.addWidget(edad_input, i * 3 + 1, 1)
+            layout.addWidget(tipo_label, i * 3 + 2, 0)
+            layout.addWidget(tipo_input, i * 3 + 2, 1)
 
-    def leer_datos(self):
-        mascotas = []
-        for entrada in self.entradas:
-            nombre, tipo, edad = entrada[0].get(), entrada[1].get(), entrada[2].get()
-            try:
-                mascotas.append(Mascota(nombre, tipo, int(edad)))
-            except ValueError:
-                messagebox.showerror("Error", "La edad debe ser un número entero.")
-                return
-        info = "\n".join(str(mascota) for mascota in mascotas)
-        messagebox.showinfo("Mascotas Registradas", info)
+            # Almacenar los campos de entrada para acceder a ellos despues
+            self.mascotas.append({
+                'nombre': nombre_input,
+                'edad': edad_input,
+                'tipo': tipo_input
+            })
 
-# y por ultimo donde se ejecutara el programa de registro de mascotas 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = VentanaMascotas(root)
-    root.mainloop()
+        # este boton imprime los datos
+        self.print_button = QPushButton("Imprimir Datos")
+        self.print_button.clicked.connect(self.print_data)
+        layout.addWidget(self.print_button, 9, 0, 1, 2)
+
+        # regresar al diseño principal
+        self.setLayout(layout)
+
+    def print_data(self):
+        # Obtener y mostrar los datos de cada mascota
+        for i, mascota in enumerate(self.mascotas):
+            nombre = mascota['nombre'].text()
+            edad = mascota['edad'].text()
+            tipo = mascota['tipo'].text()
+            print(f"Mascota {i + 1}:")
+            print(f"  Nombre: {nombre}")
+            print(f"  Edad: {edad}")
+            print(f"  Tipo: {tipo}")
+            print("--------------------")
+
+# Crear la aplicación
+app = QApplication(sys.argv)
+window = MascotaForm()
+window.show()
+sys.exit(app.exec_())
 
