@@ -35,7 +35,7 @@ Problemática que resuelve:
 
 El programa resuelve el problema de recolectar varios datos de una persona de manera eficiente y organizada. Asegura que los datos ingresados en el campo de edad sean válidos, evitando errores típicos en el formato de entrada. Además, permite almacenar y visualizar datos importantes de manera estructurada.
 
-"""**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese su género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
+"""**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese mediante el teclado su nombre, género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
 
 Los Widgets utilizados:
 

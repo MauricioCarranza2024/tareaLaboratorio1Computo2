@@ -1,13 +1,18 @@
+#aqui hacemos la importacion de todo lo que vamos a utilizar
 import sys
-from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QLabel, QRadioButton, QComboBox, QSpinBox, QPushButton, QMessageBox
+from PyQt5.QtWidgets import QApplication, QVBoxLayout, QWidget, QLabel, QRadioButton, QComboBox, QSpinBox, QPushButton, QMessageBox, QLineEdit
 
 class VentanaWidgets(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Ejercicio con PyQt5")  # aqui va el título de la ventana
-        self.setGeometry(100, 100, 400, 300)  # aqui va el tamaño de la ventana
+        self.setWindowTitle("Formulario de Datos Personales")  # aqui va el título de la ventana
+        self.setGeometry(100, 100, 400, 350)  # aqui va el tamaño de la ventana
 
         layout = QVBoxLayout()  # este es para que el layout sea vertical
+
+        # Aqui se agregó un campo de texto para el nombre
+        self.label_nombre = QLabel("Ingrese su nombre:", self)
+        self.input_nombre = QLineEdit(self)
 
         # Aqui use RadioButton para poder seleccionar el género
         self.label_genero = QLabel("Seleccione su género:", self)
@@ -22,13 +27,15 @@ class VentanaWidgets(QWidget):
         # Aqui use SpinBox para seleccionar la edad
         self.label_edad = QLabel("Seleccione su edad:", self)
         self.spin_edad = QSpinBox(self)
-        self.spin_edad.setRange(0, 100)  # aqui le puse que la edad tenga un ango de 0 a 100 años
+        self.spin_edad.setRange(0, 100)  # aqui le puse que la edad tenga un rango de 0 a 100 años
 
-        # aqui coloque un botón para enviar los datos
-        self.boton_enviar = QPushButton("Enviar", self)
-        self.boton_enviar.clicked.connect(self.enviar_datos)
+        # aqui coloque un boton para ver los datos enviados los datos
+        self.boton_ver = QPushButton("Ver datos", self)
+        self.boton_ver.clicked.connect(self.enviar_datos)
 
         # aqui agregamos el widgets al layout
+        layout.addWidget(self.label_nombre)
+        layout.addWidget(self.input_nombre)
         layout.addWidget(self.label_genero)
         layout.addWidget(self.radio_masculino)
         layout.addWidget(self.radio_femenino)
@@ -36,11 +43,14 @@ class VentanaWidgets(QWidget):
         layout.addWidget(self.combo_pais)
         layout.addWidget(self.label_edad)
         layout.addWidget(self.spin_edad)
-        layout.addWidget(self.boton_enviar)
+        layout.addWidget(self.boton_ver)
 
         self.setLayout(layout)
 
     def enviar_datos(self):
+        # Aqui obtenemos el nombre ingresado
+        nombre = self.input_nombre.text()
+
         # usamos el if para obtener el género seleccionado
         if self.radio_masculino.isChecked():
             genero = "Masculino"
@@ -48,7 +58,7 @@ class VentanaWidgets(QWidget):
             genero = "Femenino"
         else:
             genero = "No especificado"
-        
+
         # tambien aqui para obtener el país seleccionado
         pais = self.combo_pais.currentText()
 
@@ -56,7 +66,7 @@ class VentanaWidgets(QWidget):
         edad = self.spin_edad.value()
 
         # Aqui mostramos los datos seleccionados en un mensaje emergente
-        QMessageBox.information(self, "Datos ingresados", f"Género: {genero}\nPaís: {pais}\nEdad: {edad}")
+        QMessageBox.information(self, "Datos ingresados", f"Nombre: {nombre}\nGénero: {genero}\nPaís: {pais}\nEdad: {edad} años")
 
 app = QApplication(sys.argv)
 ventana = VentanaWidgets()
