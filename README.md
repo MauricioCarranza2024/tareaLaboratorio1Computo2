@@ -25,6 +25,9 @@ El programa es ideal para formularios de registro o sistemas de entrada de datos
 
 
 
+
+
+
 """**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese su género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
 
 Los Widgets utilizados:
