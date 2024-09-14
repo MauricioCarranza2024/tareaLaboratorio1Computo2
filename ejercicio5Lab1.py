@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# aca hacemos la creacion de la clase persona para solicitar los datos al usuario de se va registrar 
+# Aca hacemos la creacion de la clase persona para solicitar los datos al usuario de se va registrar 
 class Persona:
     def __init__(self, nombre, apellido, edad, direccion, telefono, email, ocupacion, genero, estado_civil, nacionalidad):
         self.nombre = nombre
@@ -20,7 +20,7 @@ class Persona:
                 f"Teléfono: {self.telefono}\nEmail: {self.email}\nOcupación: {self.ocupacion}\n"
                 f"Género: {self.genero}\nEstado Civil: {self.estado_civil}\nNacionalidad: {self.nacionalidad}")
 
-# en esta otra clase habilitamos la ventana para que la persona se registre 
+# En esta otra clase habilitamos la ventana para que la persona se registre 
 class VentanaPersona:
     def __init__(self, root):
         self.root = root

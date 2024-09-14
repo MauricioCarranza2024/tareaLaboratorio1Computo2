@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# en esta clase llamada mascota, identificamos el nombre, el tipo, la edad de las mascotas que se registraran 
+# En esta clase llamada mascota, identificamos el nombre, el tipo, la edad de las mascotas que se registraran 
 class Mascota:
     def __init__(self, nombre, tipo, edad):
         self.nombre = nombre
@@ -11,7 +11,7 @@ class Mascota:
     def __str__(self):
         return f"Mascota: {self.nombre}, Tipo: {self.tipo}, Edad: {self.edad} años"
 
-# en esta otra clase creamos la venta donde se registraran las mascotas 
+# En esta otra clase creamos la venta donde se registraran las mascotas 
 class VentanaMascotas:
     def __init__(self, root):
         self.root = root

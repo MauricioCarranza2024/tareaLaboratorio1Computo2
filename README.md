@@ -25,11 +25,11 @@ El programa es ideal para formularios de registro o sistemas de entrada de datos
 
 """**Ejercicio 4**""" En el ejercio 4 del libro nos pide Construir un programa que muestre una ventana a través de la cual se pueda leer tres datos básicos de 3 mascotas diferentes, y en este caso dimos dicha solucion.
 
-solucion: la solion es que desarrollamos un programa donde se pueda llevar un registro de diferentes mas cotas sin importar la edad, el tipo, y  el nombre y asi mismo darle un beneficio a la veterinaria a llevar un mejor regitro ordenado y preciso y asi mismo para realizar el programa con interfaz grafica utilizamos tkinker, para que teng una buena presentacion.
+Solucion: la solion es que desarrollamos un programa donde se pueda llevar un registro de diferentes mas cotas sin importar la edad, el tipo, y  el nombre y asi mismo darle un beneficio a la veterinaria a llevar un mejor regitro ordenado y preciso y asi mismo para realizar el programa con interfaz grafica utilizamos tkinker, para que teng una buena presentacion.
 
-"""**Ejercicio 5**""" el ejercicio 5 del libro nos pide contruir un progrma que registre 10 datos caracteristicos de una persona y le dimos dicha solucion
+"""**Ejercicio 5**""" El ejercicio 5 del libro nos pide contruir un progrma que registre 10 datos caracteristicos de una persona y le dimos dicha solucion.
 
-solucion:la solucion es que creamos una aplicacion de escritorio simple donde le permite al usuario poner 10 datos caracteristicos mediante una ventana interactiva donde se le facilita agregar sus datos sin ningun problema ya que la aplicacion esta diseñada para modificar, guardar o salir de la interfaz donde se encuentre el usuario y asi mismo llevar un orden de sus datos. y para que esto se hiciera posibleme utilizamos tkinker.
+Solucion:la solucion es que creamos una aplicacion de escritorio simple donde le permite al usuario poner 10 datos caracteristicos mediante una ventana interactiva donde se le facilita agregar sus datos sin ningun problema ya que la aplicacion esta diseñada para modificar, guardar o salir de la interfaz donde se encuentre el usuario y asi mismo llevar un orden de sus datos. y para que esto se hiciera posibleme utilizamos tkinker..
 
 """**Ejercicio usando PyQt mediante una problematica**""" Este programa permite que el usuario ingrese su género, país y edad en el cual estuvimos utilizando los widgets QRadioButton, QComboBox, y QSpinBox. Al presionar el botón "Enviar", los datos ingresados se muestran en una ventana emergente (QMessageBox).
 
